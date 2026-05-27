@@ -1,0 +1,243 @@
+/* pages/index/index.wxss — 首页样式（含广告组件） */
+
+.container {
+  background: var(--bg-color, #f5f5f5);
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+/* ── 顶部轮播区 ─────────────────────────────────────────────────── */
+.top-swiper {
+  width: 100%;
+  height: 400rpx;
+}
+.hero-slide, .ad-slide {
+  position: relative;
+  width: 100%;
+  height: 400rpx;
+  overflow: hidden;
+}
+.hero-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Hero 文字覆盖层 */
+.hero-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 40rpx 30rpx 30rpx;
+  background: linear-gradient(transparent, rgba(0,0,0,0.68));
+}
+.museum-name {
+  display: block;
+  font-size: 42rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 8rpx;
+}
+.museum-slogan {
+  font-size: 26rpx;
+  color: rgba(255,255,255,0.85);
+}
+
+/* 推广轮播图覆盖层 */
+.ad-slide-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 32rpx 24rpx 28rpx;
+  background: linear-gradient(transparent, rgba(0,0,0,0.55));
+  display: flex;
+  align-items: flex-end;
+  gap: 16rpx;
+}
+/* 「推广」标识 */
+.ad-badge {
+  font-size: 20rpx;
+  color: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.45);
+  border: 1rpx solid rgba(255,255,255,0.4);
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+  flex-shrink: 0;
+  align-self: flex-end;
+  margin-bottom: 4rpx;
+}
+.ad-slide-text { flex: 1; }
+.ad-slide-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 6rpx;
+}
+.ad-slide-sub {
+  font-size: 24rpx;
+  color: rgba(255,255,255,0.82);
+}
+
+/* ── 通用 section ───────────────────────────────────────────────── */
+.section { margin: 24rpx 24rpx 0; }
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text-color, #222);
+}
+.section-more { font-size: 26rpx; color: #c8a96e; }
+
+/* ── 博物馆简介卡片 ─────────────────────────────────────────────── */
+.intro-card {
+  background: var(--card-bg, #fff);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.06);
+}
+.intro-text { font-size: 28rpx; color: #555; line-height: 1.7; }
+.intro-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 24rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+.stat-item { text-align: center; }
+.stat-num { display: block; font-size: 34rpx; font-weight: bold; color: #c8a96e; }
+.stat-label { font-size: 24rpx; color: #999; }
+
+/* ── 分类网格 ───────────────────────────────────────────────────── */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16rpx;
+}
+.category-item {
+  background: var(--card-bg, #fff);
+  border-radius: 16rpx;
+  padding: 20rpx 10rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+}
+.category-icon { font-size: 40rpx; display: block; margin-bottom: 8rpx; }
+.category-name { font-size: 24rpx; color: #333; display: block; }
+.category-count { font-size: 20rpx; color: #999; }
+
+/* ── 精选展品横滑 ───────────────────────────────────────────────── */
+.featured-scroll { white-space: nowrap; }
+.featured-list { display: inline-flex; gap: 20rpx; padding: 4rpx 0; }
+.featured-item {
+  display: inline-block;
+  width: 260rpx;
+  background: var(--card-bg, #fff);
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.08);
+  vertical-align: top;
+}
+.featured-img { width: 260rpx; height: 180rpx; display: block; }
+.featured-info { padding: 16rpx; }
+.featured-name {
+  display: block;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 6rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.featured-period { font-size: 22rpx; color: #999; display: block; margin-bottom: 10rpx; }
+.audio-badge {
+  font-size: 20rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+  display: inline-block;
+  background: #e8f5e9;
+  color: #388e3c;
+}
+
+/* ── 激励视频广告入口卡 ─────────────────────────────────────────── */
+.reward-card {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #fff8e1, #fff3cd);
+  border: 1rpx solid #f0c040;
+  border-radius: 16rpx;
+  padding: 22rpx 24rpx;
+  gap: 18rpx;
+}
+.reward-icon { font-size: 44rpx; flex-shrink: 0; }
+.reward-info { flex: 1; }
+.reward-title { display: block; font-size: 28rpx; font-weight: bold; color: #5d4037; margin-bottom: 4rpx; }
+.reward-sub { font-size: 22rpx; color: #8d6e63; }
+.reward-arrow { font-size: 40rpx; color: #c8a96e; }
+
+/* ── 参观信息卡片 ───────────────────────────────────────────────── */
+.info-card {
+  background: var(--card-bg, #fff);
+  border-radius: 16rpx;
+  padding: 8rpx 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.06);
+}
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+  gap: 16rpx;
+}
+.info-row:last-child { border-bottom: none; }
+.info-label { font-size: 26rpx; color: #666; white-space: nowrap; min-width: 160rpx; }
+.info-value { font-size: 26rpx; color: #333; flex: 1; }
+
+/* ── 底部 Banner 广告 ───────────────────────────────────────────── */
+/* 合规：仅首页/展品列表/个人中心底部展示，展品详情及音频播放页无广告 */
+.bottom-placeholder { height: 120rpx; }
+
+.bottom-banner {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 120rpx;
+  background: #fff;
+  border-top: 1rpx solid #ebebeb;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 -2rpx 10rpx rgba(0,0,0,0.06);
+}
+.banner-ad-img {
+  flex: 1;
+  height: 100%;
+  display: block;
+}
+/* 「广告」合规标识 */
+.banner-ad-label {
+  position: absolute;
+  left: 10rpx;
+  top: 8rpx;
+  font-size: 18rpx;
+  color: #fff;
+  background: rgba(0,0,0,0.38);
+  padding: 2rpx 10rpx;
+  border-radius: 6rpx;
+}
+/* 一键关闭按钮（必须有，用户手动关闭后 30 分钟不再显示） */
+.banner-close-btn {
+  position: absolute;
+  right: 0; top: 0;
+  width: 72rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #fff;
+  background: rgba(0,0,0,0.28);
+  border-radius: 0 0 0 12rpx;
+}

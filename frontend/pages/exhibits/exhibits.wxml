@@ -1,0 +1,86 @@
+<!-- pages/exhibits/exhibits.wxml — 展品列表页 -->
+<!-- 广告合规：信息流原生广告强制标注「广告」，不遮挡展品内容，展品详情/音频播放页全程无广告 -->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-inner">
+      <text class="search-icon">🔍</text>
+      <input
+        class="search-input"
+        placeholder="搜索展品名称、朝代..."
+        value="{{searchVal}}"
+        bindinput="onSearchInput"
+      />
+      <text class="search-clear" wx:if="{{searchVal}}" bindtap="onSearchClear">✕</text>
+    </view>
+  </view>
+
+  <!-- 分类 Tab -->
+  <scroll-view class="category-scroll" scroll-x>
+    <view class="category-tabs">
+      <view
+        class="cat-tab {{activeCategory === item.id ? 'active' : ''}}"
+        wx:for="{{categories}}"
+        wx:key="id"
+        bindtap="onCategoryTap"
+        data-id="{{item.id}}"
+      >{{item.name}}</view>
+    </view>
+  </scroll-view>
+
+  <!-- 混合展示列表：展品 + 信息流原生广告 -->
+  <view class="exhibit-list" wx:if="{{displayList.length > 0}}">
+    <block wx:for="{{displayList}}" wx:key="_adKey" wx:for-item="item">
+
+      <!-- 信息流原生广告卡（每 10 条展品后 1 条，风格与页面统一，强制「广告」标识） -->
+      <view class="native-ad-item" wx:if="{{item._isAd}}">
+        <view class="native-ad-label">广告</view>
+        <image class="native-ad-img" src="{{item.image}}" mode="aspectFill"/>
+        <view class="native-ad-info">
+          <text class="native-ad-title">{{item.title}}</text>
+          <text class="native-ad-desc">{{item.subtitle}}</text>
+        </view>
+        <text class="native-ad-arrow">›</text>
+      </view>
+
+      <!-- 普通展品卡 -->
+      <view
+        class="exhibit-item"
+        wx:else
+        bindtap="goDetail"
+        data-id="{{item.id}}"
+      >
+        <image class="exhibit-img" src="{{item.image}}" mode="aspectFill" lazy-load/>
+        <view class="exhibit-info">
+          <text class="exhibit-name">{{item.name}}</text>
+          <text class="exhibit-period">{{item.period}}</text>
+          <text class="exhibit-hall">📍 {{item.hall}}</text>
+          <view class="exhibit-tags">
+            <text class="tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+          </view>
+        </view>
+        <view class="exhibit-right">
+          <view class="audio-icon">🎵</view>
+          <text class="arrow">›</text>
+        </view>
+      </view>
+
+    </block>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{displayList.length === 0}}">
+    <text class="empty-icon">🔍</text>
+    <text class="empty-text">没有找到相关展品</text>
+  </view>
+
+  <!-- 底部安全占位 -->
+  <view class="bottom-placeholder" wx:if="{{showBanner && !isAdFree}}"></view>
+</view>
+
+<!-- 底部 Banner 广告（窄条，可一键关闭，关闭后 30 分钟内不再展示） -->
+<view class="bottom-banner" wx:if="{{showBanner && bannerAd && !isAdFree}}">
+  <image class="banner-ad-img" src="{{bannerAd.image}}" mode="aspectFill" bindtap="onBannerTap"/>
+  <view class="banner-ad-label">广告</view>
+  <view class="banner-close-btn" catchtap="onCloseBanner">✕</view>
+</view>

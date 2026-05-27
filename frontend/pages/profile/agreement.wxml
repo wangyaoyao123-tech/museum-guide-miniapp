@@ -1,0 +1,22 @@
+<!-- pages/profile/agreement.wxml - 用户协议 -->
+<scroll-view class="container" scroll-y>
+  <view class="content">
+    <text class="title">用户协议</text>
+    <text class="update-time">更新日期：2024年1月1日</text>
+
+    <text class="section-title">一、服务说明</text>
+    <text class="body-text">本小程序由国家历史博物馆提供，为游客提供语音导览服务。用户购买语音导游服务后，可收听馆内全部展品的专业语音讲解。</text>
+
+    <text class="section-title">二、付费服务</text>
+    <text class="body-text">1. 语音导游服务为一次性付费，永久有效。\n2. 支付成功后，解锁状态与您的微信账号绑定，更换设备后重新扫码进入小程序即可恢复。\n3. 数字内容商品，一经解锁不支持退款，请确认后购买。</text>
+
+    <text class="section-title">三、知识产权</text>
+    <text class="body-text">本小程序内所有语音讲解内容、图文资料均为博物馆所有，未经授权不得录制、传播或用于商业用途。</text>
+
+    <text class="section-title">四、免责声明</text>
+    <text class="body-text">博物馆保留对展品信息、语音内容进行更新的权利。因网络原因导致的音频播放异常，博物馆不承担责任。</text>
+
+    <text class="section-title">五、联系我们</text>
+    <text class="body-text">如有疑问请拨打客服电话：010-65116400\n或发送邮件至：service@museum.com</text>
+  </view>
+</scroll-view>

@@ -1,0 +1,25 @@
+<!-- pages/profile/privacy.wxml - 隐私政策 -->
+<scroll-view class="container" scroll-y>
+  <view class="content">
+    <text class="title">隐私政策</text>
+    <text class="update-time">更新日期：2024年1月1日</text>
+
+    <text class="section-title">一、收集的信息</text>
+    <text class="body-text">我们仅收集以下必要信息：\n1. 微信 OpenID：用于识别您的解锁状态，实现跨设备同步。\n2. 支付信息：由微信支付处理，我们不存储您的银行卡或支付密码。</text>
+
+    <text class="section-title">二、信息使用</text>
+    <text class="body-text">收集的信息仅用于：\n1. 验证并恢复您的语音导游解锁状态。\n2. 处理支付订单及售后服务。\n我们不会将您的信息出售或共享给第三方。</text>
+
+    <text class="section-title">三、数据存储</text>
+    <text class="body-text">您的解锁状态存储于微信云开发数据库，受微信平台安全保护。本地缓存数据存储于您的设备，您可随时在个人中心清除。</text>
+
+    <text class="section-title">四、您的权利</text>
+    <text class="body-text">您有权要求删除您的个人数据。如需删除，请联系客服：010-65116400，我们将在7个工作日内处理。</text>
+
+    <text class="section-title">五、未成年人保护</text>
+    <text class="body-text">本服务面向18周岁及以上用户。未成年人使用付费服务须经监护人同意。</text>
+
+    <text class="section-title">六、联系我们</text>
+    <text class="body-text">隐私相关问题请联系：privacy@museum.com</text>
+  </view>
+</scroll-view>

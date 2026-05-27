@@ -1,0 +1,112 @@
+/* pages/profile/profile.wxss — 个人中心样式（含广告组件） */
+
+.container {
+  background: var(--bg-color, #f5f5f5);
+  min-height: 100vh;
+  padding-bottom: 60rpx;
+}
+
+/* ── 用户信息头部 ─────────────────────────────────────────────────── */
+.header {
+  background: linear-gradient(160deg, #1a1a2e, #16213e);
+  padding: 60rpx 30rpx 40rpx;
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+.avatar-wrap {
+  width: 120rpx; height: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4rpx solid rgba(255,255,255,0.3);
+  flex-shrink: 0;
+}
+.avatar { width: 100%; height: 100%; }
+.user-info { flex: 1; }
+.nickname { display: block; font-size: 36rpx; font-weight: bold; color: #fff; margin-bottom: 12rpx; }
+.free-badge {
+  display: inline-block;
+  font-size: 24rpx;
+  padding: 6rpx 18rpx;
+  border-radius: 30rpx;
+  background: rgba(200,169,110,0.3);
+  color: #f5e1a0;
+}
+
+/* ── 免广告特权状态卡 ─────────────────────────────────────────────── */
+.ad-free-card {
+  margin: 24rpx 24rpx 0;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  border: 1rpx solid #a5d6a7;
+  border-radius: 16rpx;
+  padding: 22rpx 24rpx;
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+}
+.ad-free-icon { font-size: 44rpx; }
+.ad-free-info { flex: 1; }
+.ad-free-title { display: block; font-size: 28rpx; font-weight: bold; color: #2e7d32; margin-bottom: 4rpx; }
+.ad-free-sub { font-size: 22rpx; color: #388e3c; }
+
+/* ── 菜单区 ───────────────────────────────────────────────────────── */
+.menu-section { margin: 24rpx 24rpx 0; }
+.menu-title { display: block; font-size: 26rpx; color: #999; margin-bottom: 12rpx; padding-left: 4rpx; }
+.menu-list { background: #fff; border-radius: 16rpx; overflow: hidden; box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.06); }
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 24rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+  gap: 16rpx;
+}
+.menu-item:last-child { border-bottom: none; }
+.menu-icon { font-size: 36rpx; width: 48rpx; text-align: center; }
+.menu-label { flex: 1; font-size: 28rpx; color: #333; }
+.menu-arrow { font-size: 36rpx; color: #ccc; }
+
+/* 激励视频入口特殊样式 */
+.reward-entry { background: linear-gradient(135deg, #fffde7, #fff8e1); }
+.menu-label-wrap { flex: 1; }
+.menu-label-wrap .menu-label { display: block; font-size: 28rpx; color: #5d4037; font-weight: bold; }
+.menu-sub { display: block; font-size: 22rpx; color: #8d6e63; margin-top: 4rpx; }
+
+/* ── 版本号 ───────────────────────────────────────────────────────── */
+.version { display: block; text-align: center; font-size: 24rpx; color: #ccc; margin-top: 40rpx; }
+
+/* ── 底部 Banner 广告 ─────────────────────────────────────────────── */
+.bottom-placeholder { height: 120rpx; }
+.bottom-banner {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 120rpx;
+  background: #fff;
+  border-top: 1rpx solid #ebebeb;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 -2rpx 10rpx rgba(0,0,0,0.06);
+}
+.banner-ad-img { flex: 1; height: 100%; display: block; }
+.banner-ad-label {
+  position: absolute;
+  left: 10rpx; top: 8rpx;
+  font-size: 18rpx;
+  color: #fff;
+  background: rgba(0,0,0,0.38);
+  padding: 2rpx 10rpx;
+  border-radius: 6rpx;
+}
+.banner-close-btn {
+  position: absolute;
+  right: 0; top: 0;
+  width: 72rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #fff;
+  background: rgba(0,0,0,0.28);
+  border-radius: 0 0 0 12rpx;
+}

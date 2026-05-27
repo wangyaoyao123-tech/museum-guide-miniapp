@@ -1,0 +1,80 @@
+/* pages/detail/detail.wxss */
+.container { background: var(--bg-color, #f5f5f5); min-height: 100vh; padding-bottom: 60rpx; }
+
+/* 图片 */
+.img-wrap { position: relative; width: 100%; height: 480rpx; }
+.exhibit-img { width: 100%; height: 100%; }
+.img-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 20rpx 24rpx;
+  background: linear-gradient(transparent, rgba(0,0,0,0.5));
+}
+.tags-row { display: flex; gap: 10rpx; flex-wrap: wrap; }
+.tag { font-size: 22rpx; background: rgba(255,255,255,0.25); color: #fff; padding: 6rpx 16rpx; border-radius: 20rpx; }
+
+/* 基本信息 */
+.info-section { background: #fff; padding: 24rpx; margin-bottom: 16rpx; }
+.exhibit-name { display: block; font-size: 40rpx; font-weight: bold; color: #222; margin-bottom: 12rpx; }
+.meta-row { display: flex; gap: 24rpx; flex-wrap: wrap; }
+.meta-item { font-size: 24rpx; color: #888; }
+
+/* 播放器卡片 */
+.player-card {
+  margin: 0 24rpx 16rpx;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: 20rpx;
+  padding: 28rpx;
+  box-shadow: 0 8rpx 24rpx rgba(26,26,46,0.3);
+}
+.player-header { display: flex; align-items: center; gap: 16rpx; margin-bottom: 24rpx; }
+.player-icon { font-size: 44rpx; }
+.player-title-wrap { flex: 1; }
+.player-title { display: block; font-size: 28rpx; font-weight: bold; color: #fff; margin-bottom: 4rpx; }
+.player-subtitle { font-size: 22rpx; color: rgba(255,255,255,0.6); }
+.player-subtitle.locked { color: #f0c040; }
+
+/* 进度条 */
+.progress-wrap { display: flex; align-items: center; gap: 12rpx; margin-bottom: 20rpx; }
+.time-text { font-size: 22rpx; color: rgba(255,255,255,0.7); white-space: nowrap; min-width: 80rpx; }
+.progress-slider { flex: 1; }
+
+/* 播放按钮 */
+.controls { display: flex; justify-content: center; }
+.play-btn {
+  width: 100rpx; height: 100rpx;
+  background: linear-gradient(135deg, #c8a96e, #a07840);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4rpx 16rpx rgba(200,169,110,0.5);
+}
+.play-btn.loading { opacity: 0.7; }
+.play-icon { font-size: 40rpx; color: #fff; }
+
+/* 未解锁提示 */
+.lock-prompt {
+  background: rgba(255,255,255,0.1);
+  border-radius: 12rpx;
+  padding: 24rpx;
+  text-align: center;
+}
+.lock-text { display: block; font-size: 26rpx; color: rgba(255,255,255,0.8); margin-bottom: 10rpx; }
+.lock-action { font-size: 28rpx; color: #c8a96e; font-weight: bold; }
+
+/* 文字介绍 */
+.desc-section { background: #fff; margin: 0 24rpx 16rpx; border-radius: 16rpx; padding: 24rpx; }
+.section-title { display: block; font-size: 30rpx; font-weight: bold; color: #222; margin-bottom: 16rpx; }
+.desc-text { font-size: 28rpx; color: #555; line-height: 1.8; }
+
+/* 详细信息表 */
+.detail-table { background: #fff; margin: 0 24rpx; border-radius: 16rpx; padding: 24rpx; }
+.table-row {
+  display: flex; padding: 16rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.table-row:last-child { border-bottom: none; }
+.table-label { font-size: 26rpx; color: #999; width: 120rpx; flex-shrink: 0; }
+.table-value { font-size: 26rpx; color: #333; flex: 1; }
+
+/* 空状态 */
+.empty { display: flex; justify-content: center; padding: 120rpx 40rpx; }
+.empty-text { font-size: 28rpx; color: #999; }

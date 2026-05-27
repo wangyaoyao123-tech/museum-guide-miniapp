@@ -1,0 +1,10 @@
+/* pages/profile/privacy.wxss */
+/* 正确示例：只写样式，不写标签 */
+.container {
+  padding: 32rpx;
+}
+.title {
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-bottom: 24rpx;
+}

@@ -1,0 +1,164 @@
+<!-- pages/index/index.wxml — 首页 -->
+<!-- 广告合规：所有广告素材来自后端接口，前端仅负责渲染 -->
+<view class="container">
+
+  <!-- ① 顶部轮播区：博物馆 Hero + 后端下发推广图（1-2 个点位） -->
+  <!-- 规则：单张 3-4 秒，支持手动滑动，无强制停留 -->
+  <swiper
+    class="top-swiper"
+    autoplay
+    circular
+    indicator-dots
+    indicator-color="rgba(255,255,255,0.5)"
+    indicator-active-color="#fff"
+    interval="{{carouselAds.length ? 3800 : 99999}}"
+  >
+    <!-- 固定第一张：博物馆 Hero（不是广告，不显示「推广」标识） -->
+    <swiper-item>
+      <view class="hero-slide">
+        <image class="hero-img" src="https://picsum.photos/750/400?random=1" mode="aspectFill"/>
+        <view class="hero-overlay">
+          <text class="museum-name">攀枝花中国三线建设博物馆</text>
+          <text class="museum-slogan">铭刻峥嵘岁月 熔铸历史丰碑</text>
+        </view>
+      </view>
+    </swiper-item>
+
+    <!-- 后端下发的推广轮播图（文旅/文创主题，禁止低俗内容） -->
+    <swiper-item wx:for="{{carouselAds}}" wx:key="id">
+      <view class="ad-slide">
+        <image class="hero-img" src="{{item.image}}" mode="aspectFill"/>
+        <view class="ad-slide-overlay">
+          <view class="ad-badge">推广</view>
+          <view class="ad-slide-text">
+            <text class="ad-slide-title">{{item.title}}</text>
+            <text class="ad-slide-sub" wx:if="{{item.subtitle}}">{{item.subtitle}}</text>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- ② 博物馆简介 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">博物馆简介</text>
+    </view>
+    <view class="intro-card">
+      <text class="intro-text">攀枝花中国三线建设博物馆2015 年免费开放，2016年获国务院冠名，由宋平题字。它是国内规模最大、藏品最全的三线主题馆，为国家二级博物馆、全国爱国主义教育示范基地，是攀枝花靓丽文化名片。</text>
+      <view class="intro-stats">
+        <view class="stat-item">
+          <text class="stat-num">2.6万+</text>
+          <text class="stat-label">三线建设文物</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-num">412套</text>
+          <text class="stat-label">珍贵文物</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-num">5套</text>
+          <text class="stat-label">国家一级文物</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ③ 展品分类入口 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">展品分类</text>
+      <text class="section-more" bindtap="goExhibits">查看全部 ></text>
+    </view>
+    <view class="category-grid">
+      <view
+        class="category-item"
+        wx:for="{{categories}}"
+        wx:key="id"
+        bindtap="goCategory"
+        data-id="{{item.id}}"
+      >
+        <view class="category-icon">🏺</view>
+        <text class="category-name">{{item.name}}</text>
+        <text class="category-count">{{item.count}}件</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ④ 精选展品（横滑） -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">精选展品</text>
+      <text class="section-more" bindtap="goExhibits">更多 ></text>
+    </view>
+    <scroll-view class="featured-scroll" scroll-x>
+      <view class="featured-list">
+        <view
+          class="featured-item"
+          wx:for="{{featuredExhibits}}"
+          wx:key="id"
+          bindtap="goDetail"
+          data-id="{{item.id}}"
+        >
+          <image class="featured-img" src="{{item.image}}" mode="aspectFill"/>
+          <view class="featured-info">
+            <text class="featured-name">{{item.name}}</text>
+            <text class="featured-period">{{item.period}}</text>
+            <view class="audio-badge">
+              <text>🎵 语音讲解</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- ⑤ 激励视频广告入口（用户主动点击，无自动弹出） -->
+  <!-- 规则：完整观看 15 秒解锁全局免广告 30 分钟，每日上限 2 次 -->
+  <view class="section" wx:if="{{rewardVideoCfg && rewardVideoCfg.is_active}}">
+    <view class="reward-card" bindtap="onWatchRewardVideo">
+      <view class="reward-icon">🎬</view>
+      <view class="reward-info">
+        <text class="reward-title" wx:if="{{isAdFree}}">免广告特权生效中 · 剩余 {{adFreeRemain}} 分钟</text>
+        <text class="reward-title" wx:else>{{rewardVideoCfg.entry_text}}</text>
+        <text class="reward-sub" wx:if="{{!isAdFree}}">今日还可观看 {{rewardRemainToday}} 次</text>
+      </view>
+      <text class="reward-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- ⑥ 参观信息 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">参观信息</text>
+    </view>
+    <view class="info-card">
+      <view class="info-row">
+        <text class="info-label">📍 地址</text>
+        <text class="info-value">四川省攀枝花市仁和区三线大道77号‌</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">🕐 开放时间</text>
+        <text class="info-value">周二至周日 9:00-17:00（16:30停止入场）</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">🎫 门票</text>
+        <text class="info-value">免费（需预约）</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">📞 电话</text>
+        <text class="info-value">0812-3329820（宣教部）&#10;0812-3343331（展厅前台）</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部安全占位（为 Banner 留空间） -->
+  <view class="bottom-placeholder" wx:if="{{showBanner && !isAdFree}}"></view>
+</view>
+
+<!-- ⑦ 底部 Banner 广告（窄条轻量化，可一键关闭，关闭后 30 分钟内不再展示） -->
+<!-- 合规：标注「广告」标识，展品详情/音频播放页全程无广告 -->
+<view class="bottom-banner" wx:if="{{showBanner && bannerAd && !isAdFree}}">
+  <image class="banner-ad-img" src="{{bannerAd.image}}" mode="aspectFill" bindtap="onBannerTap"/>
+  <view class="banner-ad-label">广告</view>
+  <view class="banner-close-btn" catchtap="onCloseBanner">✕</view>
+</view>

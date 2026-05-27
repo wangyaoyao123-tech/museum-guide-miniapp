@@ -1,0 +1,75 @@
+<!-- pages/unlock/unlock.wxml - 付费解锁页 -->
+<view class="container">
+  <!-- 已解锁状态 -->
+  <view class="unlocked-view" wx:if="{{isUnlocked}}">
+    <view class="unlocked-icon">🎉</view>
+    <text class="unlocked-title">语音导游已解锁</text>
+    <text class="unlocked-desc">您已永久解锁全馆语音讲解服务</text>
+    <button class="go-btn" bindtap="goExhibits">开始导览</button>
+  </view>
+
+  <!-- 未解锁状态 -->
+  <block wx:else>
+    <!-- 顶部装饰 -->
+    <view class="hero">
+      <view class="hero-icon">🏛️</view>
+      <text class="hero-title">解锁语音导游</text>
+      <text class="hero-subtitle">专业讲解，让每件文物都会说话</text>
+    </view>
+
+    <!-- 权益列表 -->
+    <view class="benefits-card">
+      <text class="card-title">解锁后享有</text>
+      <view class="benefit-item" wx:for="{{benefits}}" wx:key="title">
+        <view class="benefit-icon">{{item.icon}}</view>
+        <view class="benefit-info">
+          <text class="benefit-title">{{item.title}}</text>
+          <text class="benefit-desc">{{item.desc}}</text>
+        </view>
+        <view class="benefit-check">✓</view>
+      </view>
+    </view>
+
+    <!-- 价格区域 -->
+    <view class="price-card">
+      <view class="price-row">
+        <text class="price-label">永久解锁</text>
+        <view class="price-right">
+          <text class="price-original">¥99.00</text>
+          <text class="price-current">¥{{price}}</text>
+        </view>
+      </view>
+      <text class="price-tip">限时优惠 · 一次付费永久有效</text>
+    </view>
+
+    <!-- 支付按钮 -->
+    <view class="pay-section">
+      <button class="pay-btn {{loading ? 'loading' : ''}}" bindtap="onUnlockTap" disabled="{{loading}}">
+        <text wx:if="{{!loading}}">¥{{price}} 立即解锁</text>
+        <text wx:else>处理中...</text>
+      </button>
+      <text class="pay-tip">支付即表示同意
+        <text class="link" bindtap="goAgreement">《用户协议》</text>
+        和
+        <text class="link" bindtap="goPrivacy">《隐私政策》</text>
+      </text>
+    </view>
+
+    <!-- 常见问题 -->
+    <view class="faq-section">
+      <text class="faq-title">常见问题</text>
+      <view class="faq-item">
+        <text class="faq-q">Q：换手机后还能使用吗？</text>
+        <text class="faq-a">A：可以。解锁状态与微信账号绑定，重新扫码进入小程序即可自动恢复。</text>
+      </view>
+      <view class="faq-item">
+        <text class="faq-q">Q：支持退款吗？</text>
+        <text class="faq-a">A：数字内容商品，一经解锁不支持退款，请确认后购买。</text>
+      </view>
+      <view class="faq-item">
+        <text class="faq-q">Q：语音讲解有多少条？</text>
+        <text class="faq-a">A：目前覆盖全馆100+件重点展品，持续更新中。</text>
+      </view>
+    </view>
+  </block>
+</view>

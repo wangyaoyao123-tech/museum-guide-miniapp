@@ -1,0 +1,97 @@
+<!-- pages/detail/detail.wxml - 展品详情页 -->
+<wxs src="../../utils/format.wxs" module="fmt"/>
+<view class="container" wx:if="{{exhibit}}">
+  <!-- 展品图片 -->
+  <view class="img-wrap">
+    <image class="exhibit-img" src="{{exhibit.image}}" mode="aspectFill"/>
+    <view class="img-overlay">
+      <view class="tags-row">
+        <text class="tag" wx:for="{{exhibit.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 基本信息 -->
+  <view class="info-section">
+    <text class="exhibit-name">{{exhibit.name}}</text>
+    <view class="meta-row">
+      <text class="meta-item">🕐 {{exhibit.period}}</text>
+      <text class="meta-item">📍 {{exhibit.hall}}</text>
+    </view>
+  </view>
+
+  <!-- 音频播放器 -->
+  <view class="player-card">
+    <view class="player-header">
+      <view class="player-icon">🎵</view>
+      <view class="player-title-wrap">
+        <text class="player-title">{{exhibit.audio_title}}</text>
+        <text class="player-subtitle" wx:if="{{isUnlocked}}">专业讲解 · {{exhibit.audio_duration}}秒</text>
+        <text class="player-subtitle locked" wx:else>🔒 解锁后收听</text>
+      </view>
+    </view>
+
+    <!-- 已解锁：显示播放控件 -->
+    <block wx:if="{{isUnlocked}}">
+      <!-- 进度条 -->
+      <view class="progress-wrap">
+        <text class="time-text">{{fmt.formatTime(currentTime)}}</text>
+        <slider
+          class="progress-slider"
+          value="{{progress}}"
+          min="0"
+          max="100"
+          activeColor="#c8a96e"
+          backgroundColor="#e0e0e0"
+          block-size="20"
+          bindchange="onProgressChange"
+        />
+        <text class="time-text">{{fmt.formatTime(duration)}}</text>
+      </view>
+
+      <!-- 播放按钮 -->
+      <view class="controls">
+        <view class="play-btn {{audioLoading ? 'loading' : ''}}" bindtap="onPlayPause">
+          <text class="play-icon">{{audioLoading ? '⏳' : (isPlaying ? '⏸' : '▶')}}</text>
+        </view>
+      </view>
+    </block>
+
+    <!-- 未解锁：显示解锁入口 -->
+    <view class="lock-prompt" wx:else bindtap="goUnlock">
+      <text class="lock-text">解锁语音导游，收听专业讲解</text>
+      <text class="lock-action">立即解锁 ¥29.90 ›</text>
+    </view>
+  </view>
+
+  <!-- 文字介绍 -->
+  <view class="desc-section">
+    <text class="section-title">展品介绍</text>
+    <text class="desc-text">{{exhibit.description}}</text>
+  </view>
+
+  <!-- 展品信息表 -->
+  <view class="detail-table">
+    <text class="section-title">详细信息</text>
+    <view class="table-row">
+      <text class="table-label">名称</text>
+      <text class="table-value">{{exhibit.name}}</text>
+    </view>
+    <view class="table-row">
+      <text class="table-label">年代</text>
+      <text class="table-value">{{exhibit.period}}</text>
+    </view>
+    <view class="table-row">
+      <text class="table-label">展厅</text>
+      <text class="table-value">{{exhibit.hall}}</text>
+    </view>
+    <view class="table-row">
+      <text class="table-label">分类</text>
+      <text class="table-value">{{exhibit.category}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="empty" wx:else>
+  <text class="empty-text">展品信息加载中...</text>
+</view>
