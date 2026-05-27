@@ -1,0 +1,155 @@
+/* app.wxss - 全局样式 */
+/* 极致兼容超老旧版本 */
+
+/* ===== 页面基础样式 ===== */
+page {
+  background-color: #f5f5f0;
+  color: #1a1a1a;
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+/* ===== 通用重置（不用*通配符，改用具体标签） ===== */
+view, text, image, button, input, textarea, scroll-view, swiper, navigator {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===== 通用布局 ===== */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* ===== 通用卡片 ===== */
+.card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* ===== 通用按钮 ===== */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #c8a96e;
+  color: #ffffff;
+  border-radius: 50rpx;
+  height: 88rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  border: none;
+  box-shadow: 0 8rpx 24rpx rgba(200,169,110,0.4);
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+.btn-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #c8a96e;
+  border: 2rpx solid #c8a96e;
+  border-radius: 50rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+}
+
+.btn-outline::after {
+  border: none;
+}
+
+/* ===== 通用文字 ===== */
+.text-primary { color: #1a1a1a; }
+.text-secondary { color: #666666; }
+.text-hint { color: #999999; }
+.text-accent { color: #c8a96e; }
+
+.text-sm { font-size: 24rpx; }
+.text-md { font-size: 28rpx; }
+.text-lg { font-size: 32rpx; }
+.text-xl { font-size: 36rpx; }
+.text-xxl { font-size: 44rpx; }
+
+.text-bold { font-weight: 600; }
+.text-center { text-align: center; }
+
+/* ===== 间距 ===== */
+.mt-8  { margin-top: 8rpx; }
+.mt-16 { margin-top: 16rpx; }
+.mt-24 { margin-top: 24rpx; }
+.mt-32 { margin-top: 32rpx; }
+.mb-16 { margin-bottom: 16rpx; }
+.mb-24 { margin-bottom: 24rpx; }
+.p-24  { padding: 24rpx; }
+.p-32  { padding: 32rpx; }
+
+/* ===== 分割线 ===== */
+.divider {
+  height: 1rpx;
+  background: #e8e8e8;
+  margin: 24rpx 0;
+}
+
+/* ===== 加载状态 ===== */
+.loading-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 0;
+  color: #999999;
+  font-size: 26rpx;
+}
+
+/* ===== 空状态 ===== */
+.empty-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 40rpx;
+  color: #999999;
+  font-size: 26rpx;
+}
+
+.empty-wrap image {
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 24rpx;
+  opacity: 0.4;
+}
+
+/* ===== 安全区域底部适配（旧版本用固定padding兜底） ===== */
+.safe-bottom {
+  padding-bottom: 34rpx;
+}
